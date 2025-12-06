@@ -1,5 +1,0 @@
-streamlit
-xgboost
-joblib
-numpy
-pandas
