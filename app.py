@@ -7,6 +7,10 @@ model_xgb = joblib.load('xgboost_model.pkl')
 
 # Fungsi untuk prediksi
 def predict_diabetes(age, gender, hypertension, heart_disease, smoking_history, bmi, hba1c, glucose):
+    # Mengonversi gender ke dalam bentuk numerik (0 untuk Pria, 1 untuk Wanita)
+    gender = 0 if gender == 'Pria' else 1
+    
+    # Memastikan input memiliki format numerik yang sesuai
     input_data = np.array([[age, gender, hypertension, heart_disease, smoking_history, bmi, hba1c, glucose]]).astype(float)
     prediction = model_xgb.predict(input_data)
     return prediction[0]
@@ -36,6 +40,3 @@ if st.button('Prediksi Diabetes'):
         st.success('Anda berisiko diabetes')
     else:
         st.success('Anda tidak berisiko diabetes')
-
-
-
