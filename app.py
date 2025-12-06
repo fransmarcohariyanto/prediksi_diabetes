@@ -3,7 +3,7 @@ import streamlit as st
 import numpy as np
 
 # Memuat model yang telah disimpan
-model_xgb = joblib.load('xgboost_model.pkl')
+model_xgb = joblib.load('dt_model.pkl')
 
 # Fungsi untuk prediksi
 def predict_diabetes(age, gender, hypertension, heart_disease, smoking_history, bmi, hba1c, glucose):
@@ -40,3 +40,4 @@ if st.button('Prediksi Diabetes'):
         st.success('Anda berisiko diabetes')
     else:
         st.success('Anda tidak berisiko diabetes')
+
