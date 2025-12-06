@@ -6,8 +6,8 @@ import numpy as np
 model_xgb = joblib.load('xgboost_model.pkl')
 
 # Fungsi untuk prediksi
-def predict_diabetes(age, hypertension, heart_disease, smoking_history, bmi, hba1c, glucose):
-    input_data = np.array([[age, hypertension, heart_disease, smoking_history, bmi, hba1c, glucose]]).astype(float)
+def predict_diabetes(age, gender, hypertension, heart_disease, smoking_history, bmi, hba1c, glucose):
+    input_data = np.array([[age, gender, hypertension, heart_disease, smoking_history, bmi, hba1c, glucose]]).astype(float)
     prediction = model_xgb.predict(input_data)
     return prediction[0]
 
@@ -16,6 +16,7 @@ st.title('Prediksi Diabetes dengan XGBoost')
 
 # Input data
 age = st.number_input('Usia', min_value=0, max_value=100, value=25)
+gender = st.selectbox('Jenis Kelamin?', ['Pria', 'Wanita'])
 hypertension = st.selectbox('Apakah Anda hipertensi?', ['Tidak', 'Ya'])
 heart_disease = st.selectbox('Apakah Anda menderita penyakit jantung?', ['Tidak', 'Ya'])
 smoking_history = st.selectbox('Riwayat merokok', ['Tidak', 'Pernah', 'Saat ini'])
@@ -30,10 +31,11 @@ smoking_history = 1 if smoking_history == 'Saat ini' else (0 if smoking_history 
 
 # Prediksi Diabetes
 if st.button('Prediksi Diabetes'):
-    result = predict_diabetes(age, hypertension, heart_disease, smoking_history, bmi, hba1c, glucose)
+    result = predict_diabetes(age, gender, hypertension, heart_disease, smoking_history, bmi, hba1c, glucose)
     if result == 1:
         st.success('Anda berisiko diabetes')
     else:
         st.success('Anda tidak berisiko diabetes')
+
 
 
