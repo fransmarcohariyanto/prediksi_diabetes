@@ -1,6 +1,5 @@
 
 import streamlit as st
-import joblib
 import numpy as np
 import pandas as pd
 
@@ -38,3 +37,4 @@ if st.button('Prediksi Diabetes'):
         st.success('Anda berisiko diabetes')
     else:
         st.success('Anda tidak berisiko diabetes')
+
