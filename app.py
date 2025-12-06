@@ -35,7 +35,5 @@ if st.button('Prediksi Diabetes'):
         st.success('Anda berisiko diabetes')
     else:
         st.success('Anda tidak berisiko diabetes')
-        st.success('Anda berisiko diabetes')
-    else:
-        st.success('Anda tidak berisiko diabetes')
+
 
