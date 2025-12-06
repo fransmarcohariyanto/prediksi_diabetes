@@ -1,4 +1,4 @@
-import joblob
+import joblib
 # Memuat model yang telah disimpan
 model_xgb = joblib.load('xgboost_model.pkl')
 
@@ -32,4 +32,5 @@ if st.button('Prediksi Diabetes'):
         st.success('Anda berisiko diabetes')
     else:
         st.success('Anda tidak berisiko diabetes')
+
 
